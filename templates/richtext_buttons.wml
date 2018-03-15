@@ -1,0 +1,11 @@
+<div id="toolbar" class="richtoolbar">
+<img class="richtextbutton" onclick="formatText('Bold'); "  src="[% request.static_vars.imgpath %]/richtext_bold.gif" width="23" height="22" title="Bold (CTRL+B)" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('Italic')"  src="[% request.static_vars.imgpath %]/richtext_italic.gif" width="23" height="22" title="Italic (CTRL+I)" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('Underline')"  src="[% request.static_vars.imgpath %]/richtext_under.gif" width="23" height="22" title="Underline (CTRL+U)" ondragstart="return false;"> 
+<img class="richtextbutton" onclick="formatText('InsertOrderedList')"  src="[% request.static_vars.imgpath %]/richtext_numlist.gif" width="23" height="22" title="Ordered list" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('InsertUnorderedList')"  src="[% request.static_vars.imgpath %]/richtext_bullist.gif" width="23" height="22" title="Unordered list" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('CreateLink',prompt('Link URL'))"  src="[% request.static_vars.imgpath %]/richtext_link.gif" width="23" height="22" title="Hyperlink to page, document or URL" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('Unlink');"  src="[% request.static_vars.imgpath %]/richtext_unlink.gif" width="23" height="22" title="Remove hyperlink" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('RemoveFormat');"  src="[% request.static_vars.imgpath %]/richtext_erase.gif" width="23" height="22" title="Remove (all/selected) formatting" ondragstart="return false;">
+<img class="richtextbutton" onclick="formatText('InsertImage',prompt('Image URL')); "  src="[% request.static_vars.imgpath %]/richtext_image.gif" width="23" height="22" title="Insert image" ondragstart="return false;">
+</div>	

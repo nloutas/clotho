@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+<channel>
+<title>[% page.name %]</title>
+<link>http://[% request.http_host %]/</link>
+<description>Top News</description>
+<language>en</language>
+<copyright>Copyright (C) 2004 Loutas, Inc.</copyright>
+<lastBuildDate>[% page.updatedate %]Tue, 23 Nov 2004 07:24:05 -0800</lastBuildDate>
+<docs>http://blogs.law.harvard.edu/tech/rss</docs>
+<generator>Clotho 1.0</generator>
+<managingEditor>rsseditor@loutas.com</managingEditor>
+<webMaster>[% request.admin_email %]</webMaster>
+<ttl>40</ttl>
+<image>
+<title>News</title>
+<url>http://[% request.http_host %][% request.static_vars.imgpath %]/pi.gif</url>
+<link>http://[% request.http_host %][% request.static_vars.imgpath %]/pi.gif</link>
+</image>
+
+<item>
+<title>...</title>
+<link>http://[% request.http_host %]/?source=rss</link>
+<description>...</description>
+<pubDate>Tue, 23 Nov 2004 06:27:45 -0800</pubDate>
+<guid>http://[% request.http_host %]/article/04/11/23/HNibmexectoca_1.html</guid>
+</item>
+
+[% page.area('name' => 'rss', 'locked' => 1, 'types' => ['RSSitem']) %]
+
+</channel>
+</rss>
+

@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3c.org/TR/xhtml11/DTD/xhtml11">
+<html>
+<head>
+<title>[% page.name %]</title>
+[% INCLUDE defaultHeadElements.wml %]
+</head>
+<body>
+<h1>[% request.translate(page.name) %]</h1> 
+[% INCLUDE loginButtons.wml %]
+[% page.area('name' => 'main', 'locked' => 0 ) %]
+[% page.area('name' => 'bottom', 'locked' => 1, 'types' => ['Text','Image']) %]
+</body>
+</html>
+

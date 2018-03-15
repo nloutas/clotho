@@ -1,0 +1,2 @@
+<div class="title">[% element.name %]</div> 
+[% element.content.BODY %] 

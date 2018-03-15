@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>adding [% request.element.type %] element</title>
+[% INCLUDE adminHeadElements.wml %]
+</head>
+<body>
+[% IF ( request.save ) %] [% request.element.insert %] [% END %]
+<div class="header">[% request.element.type %] Element</div>
+[% request.element.validation_errors %]
+<form name="adminform" method="post" enctype="multipart/form-data" action="?">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+<input type="hidden" name="element_type" value="[% request.element_type %]">
+
+<input type="hidden" name="area" value="[% request.area %]">
+<input type="hidden" name="areaoffset" value="[% request.areaoffset %]">
+
+<div class="mandatory">Name*
+[% request.hint('Name used to identify this element') %]
+<input type="text" value="[% request.element.name %]" name="element_name">
+</div>
+[% request.element.adminForm() %]
+
+<div id="footer_buttons" class="buttons">
+<!-- this id is used to hide the table in picker -->
+<input type="submit" class="go" onclick="displayWaitMessage();" name="save" value="Insert"/> 
+&nbsp;
+<input type="reset" class="go" onclick="self.location='?view=edit'" name="cancel" value="Cancel"/>
+ </div>
+</form>
+</body>
+</html>

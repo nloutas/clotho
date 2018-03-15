@@ -1,0 +1,1 @@
+<img src="[% element.content.SRC %]" alt="[% element.content.ALT %]" title="[% element.content.ALT %]" border="[% element.content.BORDER || 0 %]" align="[% element.content.ALIGN %]" hspace="[% element.content.HSPACE %]" vspace="[% element.content.VSPACE %]" width="[% element.content.WIDTH %]" height="[% element.content.HEIGTH %]"/>

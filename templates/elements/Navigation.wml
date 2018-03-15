@@ -1,0 +1,69 @@
+<script language="Javascript1.2" src="[% request.static_vars.jspath %]/popupMenu.js"></script>
+<script language="Javascript1.2" type="text/javascript">
+// *** MENU DATA ***
+var pMenu = new PopupMenu('pMenu');
+
+with (pMenu) {
+// startMenu('menu name', Vertical menu (true/false)?, left, top, width, default ItemStyle
+[% IF ( element.content.ALIGN == 'vertical' ) %]//vertical bar
+startMenu('root', true, 0, 0, [% element.content.WIDTH || 100 %], vBar); 
+[% ELSE %] //horizontal bar
+startMenu('root', false, 'page.winW()/2 - pMenu.menu.root[0].menuW/2', 0, [% element.content.WIDTH || 17 %], hBar); // Centres.
+[% END %]
+
+// addItem('Text', 'URL or menuname', 'action type', optional ItemStyle, length, spacing,
+//  'popout indicator', popout indicator position, etc... in the same order as ItemStyles);
+[% FOREACH menu = element.menus %] [% menu %] [% END %]
+
+menu.root[0].oncreate = function() { this.visNow=true; pMenu.position('root'); pMenu.showMenu('root') }
+
+// Uncomment these lines to make specific menus show popouts on click rather than on mouseover.
+//menu.root[0].subsOnClick = true;
+//menu.mPersonal[0].subsOnClick = true;
+
+// customise hide or show delays (in milliseconds) to the menus. Defaults are:
+//showDelay = 0;   //Default 0. Set to 200 to delay before showing the menus when moused over
+hideDelay = 100; ////Default 500. Set to zero if you want to disable autohiding
+}
+
+
+// *** MENU EFFECTS AND ANIMATION ***
+// addMenuBorder(menuObject, ItemStyle, opacity of border, 'border colour', border width, 'padding colour', padding width);
+addMenuBorder(pMenu, window.subBlank, null, '#EEE', 1, '#CCCCDD', 2);
+
+// [opacity, 'layer colour', X offset, Y offset, Width Difference, Height difference]
+addDropShadow(pMenu, window.subM, [40,"#333333",6,6,-4,-4], [40,"#666666",4,4,0,0]);
+addDropShadow(pMenu, window.subBlank, [40,"#333333",6,6,-4,-4], [40,"#666666",4,4,0,0]);
+
+// Add animation to the 'pMenu' menu object for supported browsers.
+if (!isOp && navigator.userAgent.indexOf('rv:0.')==-1) {
+ //[menuname].[action] = new Function('mN','menuAnim(this, mN, [speed']);
+ pMenu.showMenu = new Function('mN','menuAnim(this, mN, 10)');
+ pMenu.hideMenu = new Function('mN','menuAnim(this, mN, -10)');
+}
+
+// Here you can extend a menu's overall dimensions, and then reposition or resize its items.
+//with (pMenu.menu) {
+// mPersonal[0].menuW += 20;  //Width
+// mPersonal[0].menuH += 20;  //Height
+// mPersonal[1].iX += 5;      //X position
+// mPersonal[2].iX += 2;       
+// mPersonal[2].iW -= 2;      //Width
+// mPersonal[3].iY += 3;      //Y position
+//}
+
+// *** EVENTS ***
+pMenu.update(true);
+
+var popOldOR = window.onresize;
+window.onresize = function() { if (popOldOR) popOldOR(); pMenu.position(); }
+window.onscroll = function() { pMenu.position(); }
+
+// Activate the window.onscroll() event in non-Microsoft browsers.
+if (!isIE || isOp) {
+ var nsPX=pageXOffset, nsPY=pageYOffset;
+ setInterval('if (nsPX!=pageXOffset || nsPY!=pageYOffset) ' +
+ '{ nsPX=pageXOffset; nsPY=pageYOffset; window.onscroll() }', 50);
+}
+
+</script>

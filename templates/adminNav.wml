@@ -1,0 +1,21 @@
+<table class="adminPalette">
+<tr class="userbuttons"> 
+<td nowrap>Welcome <b>[% request.user.fullname %]</b>!<br/>
+<input type="button" name="relogin" value="Relogin" class="loginbutton" onclick="self.location='?view=admin&template=login'" />
+<input type="button" name="logout" value="logout" class="loginbutton" onclick="self.location='?view=admin&template=login&action=logout'" />
+<input type="button" name="edit_own_details" value="Edit your details" class="loginbutton" onclick="self.location='?view=admin&template=adminUser&editUserid=[% request.userid %]'" />
+</td>
+[% IF (request.user.admin) %]
+<td align="center" width="80%">Administrate<br>
+<!-- only for administrators -->
+   [% FOREACH t = [ 'Pages', 'Profiles', 'Users', 'Templates', 'Elements'] %]
+      [% IF (request.template == "admin$t") %]
+<span class="success_msg">[% t %]</span>
+      [% ELSE %]
+<a href="?view=admin&template=admin[% t %]" class="adminLink">[% t %]</a>
+      [% END %]
+   [% END %]
+</td>
+[% END %]
+</tr>
+</table>

@@ -1,0 +1,76 @@
+<!-- Search -->
+<link rel=stylesheet href="[% request.static_vars.csspath %]/search.css" type="text/css">
+<div class="search">
+
+[% IF request.keyword %]
+<a href="?" > [% request.translate('New Search') %]</a>
+<div class="searchResults">
+    [% IF ( request.search.hits == 0 ) %]
+[% request.translate('Sorry, no pages matched your search criteria') %]
+    [% ELSE %]
+[% request.translate('Search Results') %]: 
+[% request.search.pageHits || 1 %] - [% SET maxhits = request.search.pageHits + request.hitsPerPage; (maxhits < request.search.hits ? maxhits : request.search.hits) %] of [% request.search.hits %]
+
+<ol start="[% request.search.pageHits %]">
+        [% FOREACH searchResult = request.search.displayResults %]
+<li>[% searchResult.link("searchResult") %]</li>
+        [% END %]
+</ol>
+
+[% request.search.pPageLink %]
+[% request.search.nPageLink %]
+    [% END %]
+</div>
+
+[% ELSE %]
+<h3>[% request.translate('Search') %]
+[% request.hint('Enter keyword in the text box to search through the site pages') %]
+</h3> 
+<form name="searchForm" id="siteSearch" method="POST" action="?">
+[% IF request.view != 'public' %]<input type="hidden" name="view" value="[% request.view %]"/>[% END %]
+[% IF request.template %]<input type="hidden" name="template" value="[% request.template %]"/>[% END %]
+<input type="hidden" name="searchRoot" value="[% element.content.ROOT %]"/>
+<table align="center" cellpadding="1" cellspacing="0" class="searchTable">
+<tr>
+   <td class="search" >&nbsp; [% request.translate('Keyword') %]
+<input type="text" name="keyword" value="[% request.keyword %]" size="30" />
+<input type=image src="[% request.static_vars.imgpath %]/search.gif" name="qsearchbutton" title="[% request.translate('Search') %]" border="0" >
+   </td>
+</tr>
+<tr> 
+   <td class="search"><INPUT type=checkbox name="case" value="s">[% request.translate('Case Sensitive') %] </td>
+   <td class="search" align="left"> [% request.translate('Sort by') %]
+   <select name="sort">
+      <OPTION>[% request.translate('Matches') %]</OPTION>
+      <OPTION>[% request.translate('Scores') %]</OPTION>
+      <OPTION>[% request.translate('Dates') %]</OPTION>
+      <OPTION>[% request.translate('Sizes') %]</OPTION>
+   </select> </td>
+</tr> 
+<tr> 
+   <td class="search"><INPUT type=checkbox name="w" value="1">[% request.translate('Whole Words Only') %]</td>
+   <td class="search">[% request.translate('Results per page') %] 
+   <select name="hitsPerPage"> <OPTION SELECTED>10</OPTION><OPTION>25</OPTION><OPTION>50</OPTION><OPTION>100</OPTION> </select> </td>
+</tr>
+<tr> 
+   <td colspan="2" class="listhead">&nbsp; [% request.translate('Search Content') %]</td>
+</tr>
+<tr><td colspan="2" class="search">
+       <INPUT type=checkbox name="body" value="1" checked>[% request.translate('Page Body') %]
+       <INPUT type=checkbox name="title" value="1" checked>[% request.translate('Title') %]
+       <INPUT type=checkbox name="url" value="1">Url
+       <INPUT type=checkbox name="links" value="1">[% request.translate('Links') %]
+   </td>
+</tr>
+<tr><td colspan="2" class="search">
+       <INPUT type=checkbox name="description" value="1" checked>[% request.translate('Description') %]
+       <INPUT type=checkbox name="keywords" value="1">[% request.translate('Meta-Keywords') %]
+       <INPUT type=checkbox name="author" value="1">[% request.translate('Author') %]
+   </td>
+</tr>
+</table>
+</form>
+[% END %]
+
+</div>
+<!-- End search -->

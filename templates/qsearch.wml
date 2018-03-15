@@ -1,0 +1,7 @@
+<form action="?" method="POST" name="qsearch" class="qsearch">
+<input type="hidden" name="hitsPerPage" value="10"/>
+<input type="hidden" name="searchRoot" value="/">
+<input type="hidden" name="b" value="1"><input type="hidden" name="t" value="1"><input type="hidden" name="d" value="1">
+<input type="text" size="12" name="keyword" value="[% request.keyword %]" onFocus="select(this);"> 
+<input type=image src="[% request.static_vars.imgpath %]/search.gif" name="qsearchbutton" title="search" alt="search">
+</form>

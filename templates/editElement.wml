@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Edit element '[% request.element.name %]'</title>
+[% INCLUDE adminHeadElements.wml %]
+</head>
+<body>
+[% IF ( request.save ) %] [% request.element.update %] [% END %]
+<div class="header">[% request.element.type %] Element</div>
+[% request.element.validation_errors %]
+<form name="adminform" method="post" enctype="multipart/form-data" action="?">
+<input type="hidden" name="elementid" value="[% request.elementid %]">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+
+<div class="mandatory">Name*
+[% request.hint('Name used to identify this element') %]
+<input type="text" value="[% request.element.name %]" name="element_name">
+</div>
+[% request.element.adminForm() %]
+<!-- this id is used to hide the table in picker -->
+<div id="footer_buttons" class="buttons">
+<input type="submit" class="go" onclick="displayWaitMessage();" name="save" value="Update"/> 
+&nbsp;
+<input type="reset" class="go" onclick="self.location='?view=edit'" name="cancel" value="Cancel"/>
+ </div>
+</form>
+
+</body>
+</html>

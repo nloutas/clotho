@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>User Profiles Administration</title>
+<link rel="Stylesheet" href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+<script src="[% request.static_vars.jspath %]/Granterer.js" type="text/javascript" language="Javascript"></script>
+<script src="[% request.static_vars.jspath %]/utils.js" type="text/javascript" language="Javascript"></script>
+</head>
+<body class="admin">
+<div class="top">
+<div class="header">Profiles Administration</div>
+[% INCLUDE adminNav.wml %]
+<hr class="separator">
+</div>
+<div class="content">
+[% IF request.user.admin %]
+[% IF request.delprofile %][% request.user.profile.delete(request.delprofile) %][% END %]
+<form method="post">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+<table cellspacing="4" align="center">
+<tr><th class="profile">ID</th><th class="profile">PROFILE NAME</th><th class="profile">RIGHTS</th><th class="profile">DELETE</th></tr>
+[% FOREACH profile = request.profiles %]
+<tr>
+<td class="profile">[% profile.id %]</td>
+<td class="profile"><a href="?view=admin&template=adminProfile&profileid=[% profile.id %]">[% profile.profilename %]</a> </td>
+<td class="profile">[% profile.accessrights %] </td>
+<td class="profile"><input type="button" name="delete" value="delete" class="adminbutton" onclick="self.location='?view=admin&template=adminProfiles&delprofile=[% profile.id %]'" /></td>
+</tr>
+[% END %]
+</table>
+<div class="buttons">
+<input type="button" name="createnewprofile" value="Create New Profile" class="adminbutton" onclick="self.location='?view=admin&template=adminProfile'" />
+</div>
+</form>
+[% ELSE %]
+<h3 class="error_msg">Only Administrators can edit the Profiles!</h3>
+<script language="Javascript" type="text/javascript">self.location="?view=admin&template=adminPages"</script>
+[% END %]
+</div>
+</body>
+</html>
+

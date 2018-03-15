@@ -1,0 +1,13 @@
+
+PERL
+PERL MODULES
+- TEMPLATE 
+- DBI
+- DBD::MySQL
+- XML::NamespaceSupport
+- XML::SAX or XML::Parser
+- XML::Simple
+
+MySQL 
+
+

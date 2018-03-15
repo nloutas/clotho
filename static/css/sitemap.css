@@ -1,0 +1,22 @@
+.sitemap {
+   border: 1px #ABC; border-style: none solid solid none;
+   background-color: #EEE;
+   padding: 2px;
+   color : #995;
+   cursor: default;
+}
+.sitemapLink {
+   padding: 1px 0px 0px 22px;
+   color : #AAA;
+   background-color: transparent;
+   cursor: pointer;
+   font-size: 11px;
+}
+.sitemapLinkHover {
+   padding: 1px 0px 0px 22px;
+   color : #114;
+   background:#DDD url("../img/forward.gif") no-repeat left;
+   cursor: pointer;
+   font-size: 11px;
+}
+

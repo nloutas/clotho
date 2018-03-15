@@ -1,0 +1,28 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="editor" content="CLOTHO">
+<meta NAME="DESCRIPTION" CONTENT="[% page.description %]">
+<meta NAME="KEYWORDS" CONTENT="[% page.keywords %]">
+<meta NAME="AUTHOR" CONTENT="[% page.author.fullname %]">
+<link rel=stylesheet href="[% request.static_vars.csspath %]/main.css" type="text/css">
+<link rel=stylesheet href="[% request.static_vars.csspath %]/layout.css" type="text/css">
+<script language="Javascript" src="[% request.static_vars.jspath %]/utils.js" type="text/javascript"></script>
+<script language="Javascript" type="text/javascript">
+var staticDir = '[% request.static_vars.basepath %]';
+</script>
+[% IF (request.private_view and request.user.editPage) %]
+<meta NAME="robots" CONTENT="noindex,nofollow">
+<link rel=stylesheet href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+<script language="Javascript" src="[% request.static_vars.jspath %]/EditGUI.js" type="text/javascript"></script>
+<!-- ADMIN RESULTS -->
+<script language="Javascript" type="text/javascript">
+var msg = '';
+[% IF ( request.updateArea ) %] msg = '[% page.update_area %]' [% END %]
+[% IF ( request.commit ) %] msg = '[% page.commit %]' [% END %]
+[% IF ( request.update_status ) %] msg = '[% page.update_status %]' [% END %]
+[% IF ( request.delPage ) %] msg = '[% page.delete(request.delPage) %]' [% END %]
+if (msg){ alert(msg); }
+window.onload = function() { eg = new EditGUI([% page.changed %], [% page.statusid %], staticDir); }
+</script>
+[% ELSE %]
+<meta NAME="robots" CONTENT="index,follow">
+[% END %]

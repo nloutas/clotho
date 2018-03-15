@@ -1,0 +1,283 @@
+.error_msg {
+   background-color : #E2E1CF;
+   color: red;
+   padding: 1px;
+}
+.success_msg {
+   background-color : #E2E1CF;
+   color: green;
+   padding: 1px;
+}
+
+div.element {
+   padding: 0px;
+}
+
+#emptyElement { color: red; font-weight : bold; }
+
+div.header {
+   color: #bce;
+   font-weight : bold;
+   font-size : 24px;
+   text-align: center;
+   border-style: solid none;
+   background-color : #ffe;
+}
+
+div.mandatory {
+   background-color : #D6DFE7;
+   padding: 5px;
+   border: 1px #999;
+   border-style: none none solid none;
+}
+
+div.optional {
+   background-color : #efe;
+   padding: 5px;
+   border: 1px #999;
+   border-style: none none solid none;
+}
+
+div.buttons {
+   padding: 5px;
+   text-align: center;
+   vertical-align: center;
+}
+
+div.waitdiv {
+   position: absolute;
+   top:0px;
+   left: 0px;
+   visibility: visible;
+   z-index:10000;
+   background-color: #FFFFFF;
+   width: 100%;
+   height: 100%;
+   -moz-opacity: 0.60;
+}
+div.waitTxtdiv {
+   font-family: "Century Schoolbook"; 
+   font-weight: bold;
+   font-size : 33px;
+   text-align: center;
+   color: #777;
+   position: absolute;
+   top:200px;
+   left: 380px;
+   visibility: visible;
+   z-index:10003;
+   background-color: #FFFFFF;
+   border-color: #ddd;
+   border-style: solid none ;
+}
+div.elementPalette {
+   position: absolute; 
+   top: 0px;
+   left: 0px;
+   width: 240px;
+   -moz-opacity: 0.80;
+   visibility: hidden;
+   text-align: center;
+   border-color: #757;
+   border-style: groove ;
+}
+div.elementMenu {
+   width: 100%;
+   background-color: #DDD;
+}
+
+div.pagePalette {
+   position: absolute; 
+   text-align: center;
+   vertical-align: top;
+   top: 0px;
+   left: 0px;
+   height: 11px;
+   -moz-opacity: 0.80;
+   visibility: visible;
+   background-color: #DDD;
+}
+.pagePaletteButton {
+   text-align: center;
+   font-weight: bold;
+   font-size : 10px;
+   color: #EEE;
+   margin: 0px;
+   padding: 0px 2px;
+   background-color: #777;
+   border-style: groove ;
+   border-color: #777;
+   cursor: pointer;
+}
+.pagePaletteButton:hover {
+   color: #FFF;
+}
+.elementPaletteButton {
+   font-family: "Century Schoolbook"; 
+   font-weight: bold;
+   font-size : 12px;
+   text-align: center;
+   color: #EEE;
+   padding: 0px 2px;
+   background-color: #777;
+   border-style: groove ;
+   border-color: #777;
+   cursor: pointer;
+}
+.elementPaletteButton:hover {
+   color: #777;
+   background-color: #EEE;
+}
+.gripBar {
+   font-size : 5px; /* necessary for limiting the gripBar height in IE */
+   background-color: #575;
+   text-align: right;
+   vertical-align: top;
+   margin: 0px;
+   padding: 0px;
+   height: 9px;
+   width: 100%;
+}
+.dismissButton {
+   font-size : 9px;
+   background-color: #FFF;
+   border-color: #777;
+   border-style: groove ;
+   cursor: default;
+}
+.richFrame {
+   margin: 0px;
+   padding: 0px;
+   height: 250px;
+   width: 88%;
+   border-color: #777;
+   border-style: groove ;
+   background-color: #FFF;
+}
+.richtoolbar {
+   /* visibility: hidden; display: none; */
+}
+.richtextbutton {
+   background-color: #EEE;
+   cursor: pointer;
+   border-color: #CCC;
+   border-style: outset;
+}
+.richtextbutton:hover { border-color: #111; background-color: #FFF; }
+
+input.go { color: #33CC00; background-color: #FFFFFF; border-color: #33CC00; border-style: solid none ; font-family: "Century Schoolbook"; font-weight: bold; }
+
+input.go:hover { color: #FFFFFF; background-color: #33CC00; }
+
+input.adminbutton { color: #BBA; background-color: #EFE; border-color: #339; border-style: outset; }
+input.adminbutton:hover { color: #EFE; background-color: #BBA; }
+
+.adminLink {
+   margin:1px 5px;
+   padding: 1px;
+   text-decoration: none;
+   font-weight : bold;
+   font-family : Century Schoolbook;
+   color : #ABC;
+}
+.adminLink:hover {
+   text-decoration: underline;
+   font-weight : bold;
+   color : #EEE;
+   background-color: #ABC;
+}
+
+.adminPalette {
+   text-align: center;
+   background-color: #EEE;
+   border-style: groove ;
+   border-color: #ABA;
+   padding: 2px;
+   width:100%;
+}
+.separator {
+   background: #fff  url("../img/adminbg.gif") ;
+   padding: 3px;
+   margin: 0px;
+}
+
+.profile {
+   border: 1px #ABC; border-style: none solid solid none;
+   background-color: #EFE;
+   padding: 3px;
+   color : #999;
+   cursor: default;
+}
+.element {
+   border: 1px #ABC; border-style: none solid solid none;
+   padding: 1px;
+   cursor: default;
+}
+
+.tmpladmin {
+   border: 1px #ABC; border-style: none solid solid none;
+   background-color: #BBB;
+   padding: 3px;
+   color : #EEE;
+   cursor: default;
+}
+.tmplLink {
+   text-decoration: none;
+   font-weight : bold;
+   font-family : Century Schoolbook;
+   color : #EDC;
+}
+
+.tmplLink:hover {
+   text-align: center;
+   text-decoration: underline;
+   color : #EEE;
+   background-color: #BBB;
+}
+
+.loginform {
+   text-align: center;
+   background-color: #EEE;
+   border-style: solid none;
+   border-color: #A22;
+}
+
+.area {
+   padding: 1px; /* do not edit; required for the EditGUI to work properly */
+}
+
+.userbuttons { text-align: centre; }
+input.loginbutton { color: #A22; background-color: #EEE; border-color: #3C9; border-style: ridge; font-weight: none; margin: 1px 7px;}
+input.loginbutton:hover { color: #EEE; background-color: #A22; }
+
+h1 { color: #999; text-transform: capitalize; }
+h2 { color: #BBB; text-transform: capitalize; border-bottom: 3px ridge #888;}
+
+body {
+   background: #fff  url("../img/pi.gif") fixed no-repeat bottom left;
+   margin: 0px;
+}
+body.admin {
+   overflow-y: hidden;
+   padding: 105px 0px 0px 0px;
+}
+
+@media screen {
+  body.admin> div.top {
+position:fixed;
+overflow:hidden;
+top: 0px;
+padding:0px;
+width:100%;
+height:105px;
+z-index:1;
+text-align:center;
+  }
+  body.admin> div.content {
+position:relative;
+overflow: auto;
+width:100%;
+height:100%;
+margin:  0px;
+  }
+}

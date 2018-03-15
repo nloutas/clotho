@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Elements Administration</title>
+<link rel="Stylesheet" href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+<script src="[% request.static_vars.jspath %]/Granterer.js" type="text/javascript" language="Javascript"></script>
+<script src="[% request.static_vars.jspath %]/utils.js" type="text/javascript" language="Javascript"></script>
+</head>
+<body class="admin">
+<div class="top">
+<div class="header">Elements Administration</div>
+[% INCLUDE adminNav.wml %]
+<hr class="separator">
+</div>
+<div class="content">
+[% IF request.user.admin %]
+[% IF request.delelement %][% request.element.delete() %][% END %]
+<form method="post">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+<table cellspacing="4" align="center" class="">
+<tr><th class="element">ID</th><th class="element">NAME</th><th class="element">TYPE</th><th class="element">LAST UPDATED</th><th class="element">DELETE</th></tr>
+[% FOREACH element = request.elements %]
+<tr>
+<td class="element">[% element.id %]</td>
+<td class="element"><a href="?view=admin&template=editElement&elementid=[% element.id %]">[% element.name %]</a> </td>
+<td class="element">[% element.type %] </td>
+<td class="element">[% element.updatedate %] </td>
+<td class="element"><input type="button" name="delete" value="delete" class="adminbutton" onclick="self.location='?view=admin&template=adminElements&elementid=[% element.id %]&delelement=1'" /></td>
+</tr>
+[% END %]
+</table>
+<div class="buttons">
+<input type="button" name="createnewelement" value="Create New Element" class="adminbutton" onclick="self.location='?view=admin&template=addElement&element_type='+prompt('Element Type')" />
+</div>
+</form>
+[% ELSE %]
+<h3 class="error_msg">Only Administrators can edit the Elements!</h3>
+<script language="Javascript" type="text/javascript">self.location="?view=admin&template=adminPages"</script>
+[% END %]
+</div>
+</body>
+</html>
+

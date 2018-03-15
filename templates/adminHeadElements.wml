@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta NAME="robots" CONTENT="noindex,nofollow">
+<link rel=stylesheet href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+<script language="Javascript" src="[% request.static_vars.jspath %]/utils.js"></script>
+[% IF request.user.public && request.template != 'login' %]
+<script language="Javascript" type="text/javascript">
+alert("please login before accessing this page!");
+self.location="?";
+</script>
+[% END %]

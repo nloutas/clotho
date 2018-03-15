@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>[% IF request.editTemplateid %]Edit[% ELSE %]Add[% END %] template</title>
+[% INCLUDE adminHeadElements.wml %]
+</head>
+<body>
+<div class="header">[% IF request.editTemplateid %]Edit[% ELSE %]Add[% END %] template</div>
+[% IF request.user.admin %]
+[% IF ( request.save == 'create template' ) %] [% page.template.insert %]
+[% ELSIF request.save == 'edit template' %] [% request.editTemplate.update %]
+[% END %]
+[% request.validation_errors %]
+
+<form method="post">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+<input type="hidden" name="editTemplateid" value="[% request.editTemplateid %]">
+<div class="mandatory">Name</div>
+    <input size="30" type="text" name="tmpl_name" value="[% request.tmpl_name || request.editTemplate.name %]"/><br/>
+<div class="mandatory">Simple Name</div>
+    <input size="30" type="text" name="tmpl_simplename" value="[% request.tmpl_simplename || request.editTemplate.simplename %]"/><br/>
+<div class="optional">Path</div>
+    <input size="30" type="text" name="tmpl_path" value="[% request.tmpl_path || request.editTemplate.path %]"/><br/>
+<div class="optional">Content</div>
+<textarea name="tmpl_content" rows=12 cols=50 wrap="soft" class="">[% request.tmpl_content || request.editTemplate.content %]</textarea>
+<div class="optional">Hidden <input type="checkbox" name="tmpl_hidden" [% IF request.tmpl_hidden || request.editTemplate.hidden %]checked[% END %] value="1"></div>
+
+<div class="buttons">
+<input type="submit" name="save" onclick="displayWaitMessage();" value="[% IF request.editTemplateid %]edit[% ELSE %]create[% END %] template" class="go" />&nbsp;
+<input type="button" name="cancel" value="cancel" class="go" onclick="self.location='?view=admin&template=adminTemplates'" />
+</div>
+</form>
+[% ELSE %]
+<h3 class="error_msg">Only Administrators can edit the templates!</h3>
+[% END %]
+</body>
+</html>
+

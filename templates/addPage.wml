@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Add a new page</title>
+[% INCLUDE adminHeadElements.wml %]
+
+</head>
+<body>
+[% IF ( request.commit_insert == 1 ) %]
+[% page.insert %]
+[% END %]
+
+<form method="POST">
+<input type="hidden" name="commit_insert" value="1">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+
+<div class="mandatory">Page title 
+[% request.hint('Will appear in any navigation to this page on the website') %]
+</div>
+<input type="text" name="page_name" value="[% request.page_name %]"/>
+
+<div class="mandatory">URL path name 
+[% request.hint("Used to construct the URL path. For example, to create a URL like '/mypage/', enter the word 'mypage' here. This  URL name should only have letters, numbers and underscore ('_') in it - do not use any spaces or punctuation in this name.") %]
+</div>
+<input type="text" name="page_simplename" value="[% request.page_simplename %]"/>
+
+<div class="optional">Keywords
+[% request.hint('Enter a comma-separated list of Keywords to be used in Site Search to retrieve this page') %]
+</div>
+<input type="text" name="page_keywords" value="[% request.page_keywords %]"/>
+
+<div class="mandatory">Template</div>
+<select name="page_templateid">
+[% FOREACH template = page.available_templates %]
+<option value="[% template.id %]">[% template.name %]</option>
+[% END %]
+</select>
+<div class="buttons">
+<input type="submit" value="Create page" class="go" />&nbsp;&nbsp;
+<input type="button" value="Cancel" class="go" onclick="self.location='?view=edit'"/>
+</div>
+
+</form>
+</body>
+</html>

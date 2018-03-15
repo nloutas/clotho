@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Access Rights Administration</title>
+
+<script src="[% request.static_vars.jspath %]/Granterer.js" type="text/javascript" language="Javascript"></script>
+<script src="[% request.static_vars.jspath %]/utils.js" type="text/javascript" language="Javascript"></script>
+[% IF request.edit_user_form %]
+<script type="text/javascript" language="Javascript">
+window.onload = function() {
+    grant = new Granterer();
+    [% FOREACH permitted = permissions.keys %]
+    	[% IF ( permissions.$permitted.name ) %]
+    grant.addNode('[% permitted %]', "[% permissions.$permitted.name.replace('"','\"') %]", 1, { 'edit':[% permissions.$permitted.edit %], 'publish':[% permissions.$permitted.publish %] } );
+    	[% END %]
+    [% END %]
+	
+    [% FOREACH possible = possibles.keys %]
+    grant.addNode('[% possible %]', "[% possibles.$possible.name.replace('"','\"') %]", 0, { 'edit':0, 'publish':0 } );
+    [% END %]
+    grant.init();
+}
+</script>
+[% END %]
+</head>
+<body class="admin">
+<div class="consoletext">
+[% IF request.user_update_success %]
+Permissions updated successfully. 
+<a href="?view=admin&edituser=-1&time=[% request.time %]" class="searchresults">go back</a>
+[% ELSIF request.show_user_list %]
+
+	[% IF request.sys_message %]
+<div class="system_msg">[% request.sys_message %]</div>
+	[% END %]
+
+<a class="searchresults" href="?view=admin&template=addUser&time=[% request.time %]">Add user</a> 
+or select the user whose permissions you wish to edit below:<br/>
+
+<p>Filter users by site:</p>
+<select name="sitefilter" onchange="displayWaitMessage(); document.location.search = '?view=admin&edituser=-1&time=[% request.time %]&sitefilter=' + this.options[this.selectedIndex].value">
+<option value="">All</option>
+[% FOREACH site = sites %]
+<option value="[% site.url %]"[% IF ( site.url == request.extension.sitefilter ) %] selected[% selected_site=site.name %][% END %]>[% site.name %]</option>
+[% END %]
+</select>
+    [% FOREACH usr = users %]
+	[% NEXT IF usr.fullname=='gas_exemplar' %]
+	<div class="consoletext">[% usr.fullname %]</div>
+	<div><a class="searchresults" href="[% request.pageid %]?view=admin&edituser=[% usr.id %]&time=[% request.time %]">Edit permissions <span style="color: #EA8154"> &gt;&gt;</span></a>&nbsp;&nbsp;[% IF am_a_sitegod or (usr.id==request.userid) %]<a class="searchresults" href="[% request.pageid %]?view=admin&edit_users_details=[% usr.id %]&time=[% request.time %]">Edit details <span style="color: #EA8154"> &gt;&gt;</span></a>[% END %]&nbsp;</div>
+    [% END %]
+[% ELSE %]
+<p>Set permissions for user [% user.username %] here.</p>
+<p>The user's current permissions are shown on the right. To grant the user rights
+to an additional site, click on the site name on the left hand side to select it
+then click the '&gt;&gt;' button. Then use the checkboxes to specify what permissions
+you wish the user to have.</p>
+<p>To disable an existing permission, click on the site
+name on the right hand side, then click the '&lt;&lt;' button to revoke all the user's
+editing rights over that site.</p>
+<p>When you are finished, click on the 'Save' button.</p>
+<div id="granterer"></div>
+[% END %]
+</div>
+</body>
+</html>

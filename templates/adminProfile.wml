@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>[% IF request.profile %]Edit[% ELSE %]Add[% END %] User Profile</title>
+[% INCLUDE adminHeadElements.wml %]
+<script src="[% request.static_vars.jspath %]/Granterer.js" type="text/javascript" language="Javascript"></script>
+<script type="text/javascript" language="Javascript">
+window.onload = function() {
+    grant = new Granterer();
+//path, name, have, startstate
+    [% FOREACH page = request.sitemap('/', 1) %]
+        [% IF ( request.profile.accessrights != 'none') %]
+    grant.addNode('[% page.path %]', "[% page.name.replace('"','\"') %]", 1, { 'edit':1, 'publish':1 } );
+        [% ELSE %]
+    grant.addNode('[% page.path %]', "[% page.name.replace('"','\"') %]", 0, { 'edit':0, 'publish':0 } );
+        [% END %]
+    [% END %]
+
+    grant.init();
+}
+</script>
+</head>
+<body>
+<div class="header">[% IF request.profile %]Edit[% ELSE %]Add[% END %] User Profile</div>
+[% IF request.user.admin %]
+[% IF ( request.save == 'create profile' ) %] [% request.user.profile.insert %]
+[% ELSIF request.save == 'edit profile' %] [% request.profile.update %]
+[% END %]
+[% request.validation_errors %]
+
+<form method="post">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+<input type="hidden" name="profileid" value="[% request.profileid %]">
+<div class="mandatory">Profile Name</div>
+    <input size="30" type="text" name="profile_profilename" value="[% request.profile_profilename || request.profile.profilename %]"/><br/>
+<div class="mandatory">Access Rights</div>
+<select name="profile_accessrights">
+    [% FOREACH right = [ 'none', 'all', 'edit', 'access'] %]
+	<option value="[% right %]" [% IF ( request.profile.accessrights == right) %]selected[% END %]>[% right %]</option>[% END %]
+</select>
+
+<div id="granterer"></div>
+<div class="buttons">
+<input type="submit" name="save" onclick="displayWaitMessage();" value="[% IF request.profile %]edit[% ELSE %]create[% END %] profile" class="go" />&nbsp;
+<input type="button" name="cancel" value="cancel" class="go" onclick="self.location='?view=admin&template=adminProfiles'" />
+</div>
+</form>
+[% ELSE %]
+<h3 class="error_msg">Only Administrators can edit a Profile!</h3>
+[% END %]
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+[% IF (request.view != 'public') %]
+<div class="loginbuttons">
+[% IF (request.userid == 1) %]<input type="button" name="login" value="login" class="loginbutton" onclick="self.location='?template=login'" />
+[% ELSE %]<input type="button" name="logout" value="logout" class="loginbutton" onclick="self.location='?view=[% request.view %]&template=login&action=logout'" /> [% END %]
+</div>
+[% ELSE %]
+&nbsp;
+[% END %]

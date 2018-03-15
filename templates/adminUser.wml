@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>[% IF request.editUser %]Edit[% ELSE %]Add[% END %] user</title>
+[% INCLUDE adminHeadElements.wml %]
+</head>
+<body>
+<div class="header">[% IF request.editUser %]Edit[% ELSE %]Add[% END %] user</div>
+[% IF (request.user.admin || request.user.userid == request.editUserid ) %]
+[% IF ( request.save == 'create user' ) %] [% request.user.insert %] 
+[% ELSIF request.save == 'edit user' %] [% request.editUser.update %]
+[% END %]
+[% request.validation_errors %]
+<form method="post">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+<input type="hidden" name="editUserid" value="[% request.editUserid %]"/>
+<div class="mandatory">Username</div>
+    <input size="30" type="text" name="user_username" value="[% request.user_username || request.editUser.username %]"/><br/>
+<div class="[% IF request.editUser %]optional[% ELSE %]mandatory[% END %]">Password</div>
+    <input size="30" type="password" name="user_password" value=""/><br/>
+<div class="[% IF request.editUser %]optional[% ELSE %]mandatory[% END %]">Confirm Password</div>
+    <input size="30" type="password" name="user_password_confirm" value=""/><br/>
+<div class="optional">Full Name</div>
+    <input size="30" type="text" name="user_fullname" value="[% request.user_fullname || request.editUser.fullname %]" /><br/>
+<div class="optional">Email</div>
+    <input size="30" type="text" name="user_email" value="[% request.user_email || request.editUser.email %]"/><br/>
+<div class="optional">Telephone</div>
+    <input size="30" type="text" name="user_tel" value="[% request.user_tel || request.editUser.tel %]"/><br/>
+[% IF request.user.admin %]
+<div class="mandatory">User Profile</div>
+    <select name="user_profileid">
+	[% FOREACH profile = request.profiles %]
+	<option value="[% profile.id %]" [% IF ( request.editUser.memberof(profile.id)) %]selected[% END %]>[% profile.profilename %]</option>
+	[% END %]
+    </select>
+[% ELSE %]
+<input type="hidden" name="user_profileid" value="[% request.editUser.profileid %]">
+[% END %]
+[% IF request.editUser %]
+<div class="optional">Disabled <input type="checkbox" name="user_disabled" [% IF request.disabled || request.editUser.disabled %]checked[% END %] value="1"></div>
+[% END %]
+<div class="buttons">
+<input type="submit" name="save" onclick="displayWaitMessage();" value="[% IF request.editUser %]edit[% ELSE %]create[% END %] user" class="go" />&nbsp;
+<input type="button" name="cancel" value="cancel" class="go" onclick="self.location='?view=admin&template=[% IF (request.user.admin) %]adminUsers[% ELSE %]adminPages[% END %]'" />
+</div>
+</form>
+[% ELSE %]
+<h3 class="error_msg">Only an Administrator can edit another User!</h3>
+<div class="buttons">
+<input type="button" name="exit" value="exit" class="go" onclick="self.location='?view=admin&template=adminPages'" />
+</div>
+<script language="Javascript" type="text/javascript">self.location="?view=admin&template=adminPages"</script>
+[% END %]
+</body>
+</html>
+

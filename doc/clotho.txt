@@ -1,0 +1,13 @@
+<h1> Content Lavisher for Optimal Transformation and Hypermedia Optimisation </h1>
+
+<h2>INTRODUCTION </h2>
+This is an open source Content Management System, relying on PERL templating.<br/>
+<p>The content is categorised in "elements", which are inserted into the page
+"template" to dynamically generate a web page. All the data is stored in XML
+format in a MySQL RDBMS.</p> 
+<p>Everything can be administrated  on the web-based interface, through wikki-style page editing or special interfaces for advanced admnistration. Basic versioning and workflow is supported.</p>
+
+<h2>HISTORY</h2>
+Clotho, a figure from the Greek Pantheon, is the youngest of the three Fates, but one of the oldest goddesses in Greek mythology. She is a daughter of Zeus and Themis. Each fate has a certain job, whether it be measuring thread, spinning it on a spinning wheel, or cutting the thread at the right length. Clotho is the spinner, and she spins the thread of human life with her distaff. The length of the string will determine how long a certain person's life will be. She is also known to be the daughter of Night, to indicate the darkness and obscurity of human destiny. No one knows for sure how much power Clotho and her sisters have, however, they often disobey the ruler, Zeus, and other gods. For some reason, the gods seem to obey them, whether because the fates do possess greater power, or as some sources suggest, their existence is part of the order of the Universe, and this the gods cannot disturb.
+
+

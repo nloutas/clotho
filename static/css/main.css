@@ -1,0 +1,57 @@
+/* general style classes */
+
+.title { font-size: 20px; font-weight: bold; color: #131; text-transform: capitalize; border-bottom: 1px ridge #888;}
+
+table.purple { font-family: "Century Schoolbook"; border: 5px double #999999; background-color: #AAACCC;}
+
+/* list style definitions  
+Type: disc circle square decimal decimal-leading-zero lower-roman upper-roman lower-alpha upper-alpha lower-greek lower-latin upper-latin hebrew armenian georgian cjk-ideographic hiragana katakana hiragana-iroha katakana-iroha 
+*/
+.navlist {list-style:square inside; list-style-type: none; padding: 1px; margin: 0px; background-color: #FFF;}
+.navlist li { color: #330; border: 1px groove #DDD; padding: 2px; margin: 1px; }
+
+.menuHead { font-size: 16px; color:black; padding:0px 0px 0px 20px; background: url("../img/folder-0.gif") no-repeat left; }
+.menuHeadOver { font-size: 16px; color:#6a5acd; padding:0px 0px 0px 20px; background: url("../img/folder-1.gif") no-repeat left; }
+
+input.titlebutton { font-size: 20px; color: #AAA; background-color: #FFFFFF; border-color: #EEE; border-style: solid none; font-family: "Century Schoolbook"; font-weight: bold; }
+input.go { color: #33CC00; background-color: #FFFFFF; border-color: #33CC00; border-style: none solid; font-family: "Century Schoolbook"; }
+input.go:hover { color: #FFFFFF; background-color: #33CC00; }
+
+.loginbuttons { text-align: right; }
+input.loginbutton { color: #A22; background-color: #EEE; border-color: #3C9; border-style: ridge; font-weight: none; }
+input.loginbutton:hover { color: #EEE; background-color: #A22; }
+
+/* custom style classes  */
+/* border style ; double, groove, inset, outset, ridge, solid, dashed, dotted  */
+.dash { padding: 2px; border-bottom: 1px dashed; }
+.dot { color: #888; font-weight: none; font-size: 20px; border: 1px dotted }
+.listhead { margin: 1px; padding-top: 12px; font-weight: bold; border-bottom: 1px solid;  color: darkblue;}
+.header { font-family: "Century Schoolbook";  color: #999; text-transform: capitalize; font-weight: bold; font-size: 18px; text-align:center; padding: 0px; }
+.globalnav a { margin: 3px; padding:1px 20; background-color:magenta; color:#FFF }
+.globalnav a:hover { color:#1e1;  background-color:#FFF; font-weight: bold; background:transparent  url("../img/green_right_arrow.gif") no-repeat left; }
+.globalnavSelected { margin: 3px; padding:1px 20px; background-color: #EEE; color:#999; }
+#navlink a { padding:1px 18px 1px 1px; color:#aba;  }
+#navlink a:hover { padding-right: 18px; color:#353; font-weight: bold; background:#EEE url("../img/green_left_arrow.gif") no-repeat right; }
+
+.qsearch { 
+text-align:center;
+vertical-align:center;
+padding: 1px;
+margin: 0px;
+}
+.searchbox { 
+padding: 2px;
+background:#eef;
+text-align:left;
+border: 2px ridge #DDD;
+}
+
+.incFrame {
+   margin: 0px;
+   padding: 0px;
+   height: 99%;
+   width: 99%;
+   border: 0px;
+}
+
+

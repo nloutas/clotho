@@ -1,0 +1,19 @@
+<link rel=stylesheet href="[% request.static_vars.csspath %]/sitemap.css" type="text/css">
+<script language="Javascript" src="[% request.static_vars.jspath %]/utils.js"></script>
+[% IF (request.user.admin or request.user.editor) %]
+<link rel=stylesheet href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+<!-- ADMIN SITEMAP -->
+<table align="center" width="88%">
+<tr valign="top"><th class="sitemap">ADMIN PAGE</th><th class="sitemap">EDIT PAGE</th><th class="sitemap">UPDATE STATUS</th><th class="sitemap">DELETE PAGE</th></tr>
+   [% FOREACH node = request.sitemap(request.site, 3) %]
+<tr valign="top"> [% spaces = 3 - node.depth; node.adminLink(spaces) %]</tr>
+   [% END %]
+</table>
+[% ELSE %]
+<!-- PUBLIC SITEMAP -->
+<div class="sitemap"><b>SITEMAP</b></div>
+   [% FOREACH node = request.sitemap(request.site, 5) %] 
+[% spaces = 5 - node.depth; node.sitemapLink(spaces) %]
+   [% END %]
+[% END %]
+

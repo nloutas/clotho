@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[% page.name %]</title>
+[% INCLUDE defaultHeadElements.wml %]
+<link REL="shortcut icon" HREF="[% request.static_vars.basepath %]/loutas/img/L.ico" TYPE="image/x-icon">
+<link rel=stylesheet href="[% request.static_vars.basepath %]/loutas/css/style.css" type="text/css">
+<script language="Javascript1.2" src="[% request.static_vars.basepath %]/loutas/js/utils.js" type="text/javascript"></script>
+<script language="Javascript1.2" src="[% request.static_vars.jspath %]/popupMenu.js" type="text/javascript"></script>
+</head>
+<body class="complex">
+<div class="top_area">
+ [% INCLUDE loginButtons.wml %]
+</div>
+
+<script language="Javascript1.2" src="[% request.static_vars.basepath %]/loutas/js/navigation.js" type="text/javascript"></script>
+<div class="left_area">
+[% IF (page.simplename != 'search') %]
+[% INCLUDE qsearch.wml %]
+<script language="Javascript" type="text/javascript">
+document.qsearch.searchRoot.value = '/loutas/' + lang;
+document.qsearch.action = '/loutas/' + lang + '/search/';
+</script>
+[% END %]
+</div>
+
+<div class="central_area">
+[% page.area('name' => 'center', 'locked' => 0 ) %]
+<img src="[% request.static_vars.imgpath %]/blank.gif" width="100%" height="1px" border="0" alt="" title=""/>
+</div>
+
+<div class="right_area">
+[% page.area('name' => 'right', 'locked' => 0 ) %]
+</div>
+
+<div class="bottom_area">
+<script language="Javascript" src="[% request.static_vars.basepath %]/loutas/js/bottom.js" type="text/javascript"></script>
+</div>
+</body>
+</html>

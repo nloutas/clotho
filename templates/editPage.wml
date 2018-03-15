@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Edit page [% page.name %]</title>
+[% INCLUDE adminHeadElements.wml %]
+
+</head>
+<body>
+[% IF ( request.commit_update == 1 ) %]
+[% page.update %]
+[% END %]
+<form method="POST" action="?" >
+<input type="hidden" name="commit_update" value="1">
+<input type="hidden" name="view" value="[% request.view %]">
+<input type="hidden" name="template" value="[% request.template %]">
+
+<div class="mandatory">Page title
+[% request.hint('Will appear in any navigation to this page on the website') %]
+</div>
+<input type="text" name="page_name" value="[% page.name %]"/>
+
+[% IF ( request.path != '/' ) %]
+<div class="mandatory">URL path name 
+[% request.hint("Used in URL path. For example, to change a URL to '/mypage/', enter the word 'mypage' here. This  URL name should only have letters, numbers and underscore ('_') in it - do not use any spaces or punctuation in this name.") %]
+</div>
+<input type="text" name="page_simplename" value="[% page.simplename %]"/>
+[% ELSE %]
+<input type="hidden" name="page_simplename" value="[% page.simplename %]">
+[% END %]
+
+<div class="optional">Keywords
+[% request.hint('Enter a comma-separated list of Keywords to be used in Site Search to retrieve this page') %]
+</div>
+<input type="text" name="page_keywords" value="[% page.keywords %]"/>
+
+
+<div class="buttons">
+<input type="submit" value="Update" class="go" />&nbsp;&nbsp;
+<input type="button" value="Cancel" class="go" onclick="self.location='?view=edit'"/>
+</div>
+
+</form>
+</body>
+</html>

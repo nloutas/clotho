@@ -1,0 +1,75 @@
+@media screen {
+  body.horizontal> div.top { position: fixed;}  
+  body.vertical> div.left { position: fixed;}  
+}
+body {
+   margin: 0px;
+   overflow-y: hidden;
+}
+
+div.top_area {
+  position: absolute;
+  overflow: auto;
+  top: 0;
+  left: 0px;
+  text-align:center;
+  height: 30px;
+  width: 100%;
+  border: 0px groove #9e9;
+}
+  
+div.left_area { 
+  position: relative;
+  overflow: auto;
+  top:30px;
+  width:158px;
+  height:90%;
+  background: #FFF;
+  border-color: #1e1;
+  border-style: groove none;
+}
+  
+div.central_area {
+  position:absolute;
+  overflow: auto;
+  top:30px;
+  left: 160px;
+  right: 205px;
+  height:90%;
+  border-color: #e1e;
+  border-style: ridge none ;
+}
+  
+div.right_area {
+  position:absolute;
+  overflow: auto;
+  right:0px;
+  top:30px;
+  width:202px;
+  height:90%;
+  border-style: groove none;
+}
+  
+div.bottom_area {
+  position:relative;
+  overflow: auto;
+  top:29px;
+  background:transparent;
+  text-align:center;
+  float:center;
+  border: 0px ; /* DO NOT SET THE BORDER ON THE BOTTOM AREA !!! EditGUI would fail  */
+  padding: 0px;
+  margin: 0px;
+}
+
+div.content_area {
+  position:absolute;
+  overflow: auto;
+  top:30px;
+  left: 160px;
+  right:0px;
+  height:90%;
+  border-color: #e1e;
+  border-style: groove none;
+}
+  

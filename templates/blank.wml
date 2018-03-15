@@ -1,0 +1,3 @@
+[% IF request.user.admin %]
+<div class="error_msg">Missing template! Please check the error log. </div>
+[% END %]

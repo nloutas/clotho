@@ -1,0 +1,30 @@
+.search {
+   padding: 3px;
+   text-align: center;
+}
+
+.searchResults {
+   font-family : Century Schoolbook;
+   text-align: left;
+   color : #888;
+}
+
+.searchResult {
+   font-family : Century Schoolbook;
+   text-align: left;
+   color : #999;
+   text-decoration : none;
+}
+.searchResult:hover {
+   color : #111;
+   background-color: #CED;
+   text-decoration : underline;
+}
+
+.searchTable {
+   background-color: #FFF;
+   border: 2px double #999999;
+   color : #888;
+}
+td.search { vertical-align: bottom; color: #777; text-align: left;}
+

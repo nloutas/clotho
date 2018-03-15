@@ -1,0 +1,7 @@
+<item>
+<title>[% element.name %]</title>
+<link>[% element.content.LINK %]</link>
+<description>[% element.content.DESCRIPTION %]</description>
+<pubDate>[% element.content.PUBDATE %]</pubDate>
+<guid>[% element.content.GUID %]</guid>
+</item>

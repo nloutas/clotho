@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Pages Administration </title>
+<link rel=stylesheet href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+<link rel=stylesheet href="[% request.static_vars.csspath %]/sitemap.css" type="text/css">
+</head>
+<body class="admin">
+<div class="top">
+<div class="header">Pages Administration </div>
+[% INCLUDE adminNav.wml %]
+<hr class="separator">
+</div>
+<div class="content">
+[% INCLUDE elements/Search.wml %]
+<hr class="separator">
+[% INCLUDE sitemap.wml %]
+</div>
+</body>
+</html>

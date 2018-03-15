@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3c.org/TR/xhtml11/DTD/xhtml11">
+<html>
+<head>
+<title>Page Not Found</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="editor" content="CLOTHO">
+<link rel=stylesheet href="[% request.static_vars.csspath %]/admin.css" type="text/css">
+
+</head>
+<body >
+<h2>Page Not Found</h2>
+<div class="content">
+Unfortunately the Page you requested has been moved or deleted.<br/>
+You may be able to find the file you were looking for by using our 
+<b>Page Search below</b> or the <a href="/?template=sitemap" class="adminLink">Sitemap</a>
+</div>
+
+[% INCLUDE elements/Search.wml %]
+</body>
+</html>
